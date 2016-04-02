@@ -30,9 +30,9 @@ struct node{
 int between_days(struct node *date1head, struct node *date2head)
 {
 	if ((date1head == NULL) || (date2head == NULL))
-		return NULL;
-	int i = 0,dd=0,mm=0,yy=0,count=0,dd1,mm1,yy1,dd1,mm1,yy1;
-	long int n1, n2;
+		return -1;
+	int i = 0,dd=0,mm=0,yy=0,count=0,dd1=0,mm1=0,yy1=0,sum=0;
+	long int n1=0, n2=0;
 	struct node *t,*t1;
 	t = date1head;
 	t1 = date2head;
@@ -61,6 +61,16 @@ int between_days(struct node *date1head, struct node *date2head)
 	}
 	while (t1 != NULL)
 		yy1 = (yy1 * 10) + t->data;
+	if ((yy>9999) || (mm > 12) || (dd > 31))
+		return -1;
+	if ((yy == yy1) || (mm == mm1) || (dd == dd1))
+		return 0;
 	//form 2 numbers and reverse the 2 numbers and subtract n1 and n2
-	return -1;
+	if (yy1!= yy)
+		sum = sum + (365 * abs(yy1 - yy));
+	else if ((yy1 == yy) && (mm1!=mm))
+		sum = sum + (30 * abs(mm1 - mm));
+	else if (mm1==mm)
+		sum = sum + dd1 - dd;
+	return sum;
 }
