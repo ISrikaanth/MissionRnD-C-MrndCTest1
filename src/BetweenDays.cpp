@@ -27,8 +27,40 @@ struct node{
 	int data;
 	struct node *next;
 };
-
-
-int between_days(struct node *date1head, struct node *date2head){
+int between_days(struct node *date1head, struct node *date2head)
+{
+	if ((date1head == NULL) || (date2head == NULL))
+		return NULL;
+	int i = 0,dd=0,mm=0,yy=0,count=0,dd1,mm1,yy1,dd1,mm1,yy1;
+	long int n1, n2;
+	struct node *t,*t1;
+	t = date1head;
+	t1 = date2head;
+	while ((t != NULL) && (count<2))
+	{
+		dd = (dd * 10) + t->data;
+		count++;
+	}
+	while ((t != NULL) && (count<4))
+	{
+		mm = (mm * 10) + t->data;
+		count++;
+	}
+	while (t != NULL)
+		yy = (yy * 10) + t->data;
+	count = 0;
+	while ((t1 != NULL) && (count<2))
+	{
+		dd1 = (dd1 * 10) + t->data;
+		count++;
+	}
+	while ((t1 != NULL) && (count<4))
+	{
+		mm1 = (mm1 * 10) + t->data;
+		count++;
+	}
+	while (t1 != NULL)
+		yy1 = (yy1 * 10) + t->data;
+	//form 2 numbers and reverse the 2 numbers and subtract n1 and n2
 	return -1;
 }
